@@ -1,0 +1,24 @@
+{
+  "name": "clinixpro",
+  "version": "1.0.0",
+  "description": "A secure, professional, and scalable Hospital Management System built with native PHP following MVC architecture.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss ./public/assets/css/input.css -o ./public/assets/css/app.css",
+    "watch:css": "postcss ./public/assets/css/input.css -o ./public/assets/css/app.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "cssnano": "^7.1.9",
+    "postcss": "^8.5.15",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1"
+  }
+}

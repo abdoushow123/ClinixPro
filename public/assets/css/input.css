@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc; /* slate-50 */
+    --bg-tertiary: #f1f5f9;  /* slate-100 */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #94a3b8;
+    --border-color: #e2e8f0;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+  }
+
+  [data-theme="dark"], .dark {
+    --bg-primary: #09090b;   /* zinc-950 */
+    --bg-secondary: #18181b; /* zinc-900 */
+    --bg-tertiary: #27272a;  /* zinc-800 */
+    --text-primary: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-tertiary: #71717a;
+    --border-color: #27272a;
+    --glass-bg: rgba(24, 24, 27, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.05);
+  }
+
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased font-sans selection:bg-primary-200 selection:text-primary-900;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .dark body {
+    @apply bg-zinc-950 text-zinc-50 selection:bg-primary-900 selection:text-primary-100;
+  }
+}
+
+@layer components {
+  /* Modern Glass Panel / Card */
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl shadow-soft;
+  }
+  .dark .glass-panel {
+    @apply bg-zinc-900/80 backdrop-blur-xl border border-zinc-800/60 shadow-glass-dark;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .dark .btn {
+    @apply focus:ring-offset-zinc-950;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-primary-600 to-primary-500 text-white hover:from-primary-500 hover:to-primary-400 hover:shadow-glow-primary hover:-translate-y-0.5 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 hover:-translate-y-0.5 focus:ring-slate-200 shadow-sm;
+  }
+  .dark .btn-secondary {
+    @apply bg-zinc-800 text-zinc-200 border-zinc-700 hover:bg-zinc-700 focus:ring-zinc-700;
+  }
+  
+  .btn-danger {
+    @apply btn bg-gradient-to-r from-danger-600 to-danger-500 text-white hover:from-danger-500 hover:to-danger-400 hover:shadow-lg hover:-translate-y-0.5 focus:ring-danger-500;
+  }
+
+  /* Form Inputs */
+  .form-group {
+    @apply mb-5;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-slate-700 mb-1.5 ml-1;
+  }
+  .dark .form-label {
+    @apply text-zinc-300;
+  }
+  
+  .input-modern {
+    @apply w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 shadow-sm;
+  }
+  .dark .input-modern {
+    @apply border-zinc-700 bg-zinc-900 text-zinc-50 placeholder-zinc-500 focus:ring-primary-500/50 focus:border-primary-500;
+  }
+
+  /* Navigation Link */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 font-medium hover:text-primary-600 hover:bg-primary-50/50 transition-all duration-300 relative overflow-hidden;
+  }
+  .dark .nav-link {
+    @apply text-zinc-400 hover:text-primary-400 hover:bg-primary-900/20;
+  }
+  .nav-link.active {
+    @apply text-primary-700 bg-primary-50 shadow-sm;
+  }
+  .dark .nav-link.active {
+    @apply text-primary-300 bg-primary-900/30 border-l-2 border-primary-500;
+  }
+
+  /* Data Tables */
+  .table-wrapper {
+    @apply w-full overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+  .dark .table-wrapper {
+    @apply border-zinc-800 bg-zinc-900;
+  }
+  
+  .table-modern {
+    @apply w-full text-left border-collapse whitespace-nowrap;
+  }
+  .table-modern thead {
+    @apply bg-slate-50 text-slate-500 text-xs uppercase tracking-wider font-semibold border-b border-slate-200;
+  }
+  .dark .table-modern thead {
+    @apply bg-zinc-800/50 text-zinc-400 border-zinc-800;
+  }
+  .table-modern th {
+    @apply px-6 py-4;
+  }
+  .table-modern td {
+    @apply px-6 py-4 border-b border-slate-100 text-sm text-slate-700 align-middle;
+  }
+  .dark .table-modern td {
+    @apply border-zinc-800 text-zinc-300;
+  }
+  .table-modern tbody tr {
+    @apply hover:bg-slate-50/80 transition-colors;
+  }
+  .dark .table-modern tbody tr {
+    @apply hover:bg-zinc-800/50;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium tracking-wide;
+  }
+  .badge-success {
+    @apply bg-success-100 text-success-700 border border-success-200;
+  }
+  .dark .badge-success {
+    @apply bg-success-900/30 text-success-400 border-success-800/50;
+  }
+  .badge-warning {
+    @apply bg-warning-100 text-warning-700 border border-warning-200;
+  }
+  .dark .badge-warning {
+    @apply bg-warning-900/30 text-warning-400 border-warning-800/50;
+  }
+  .badge-danger {
+    @apply bg-danger-100 text-danger-700 border border-danger-200;
+  }
+  .dark .badge-danger {
+    @apply bg-danger-900/30 text-danger-400 border-danger-800/50;
+  }
+  .badge-primary {
+    @apply bg-primary-100 text-primary-700 border border-primary-200;
+  }
+  .dark .badge-primary {
+    @apply bg-primary-900/30 text-primary-400 border-primary-800/50;
+  }
+}
+
+@layer utilities {
+  .scrollbar-custom::-webkit-scrollbar {
+    @apply w-1.5 h-1.5;
+  }
+  .scrollbar-custom::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+  }
+  .dark .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700 hover:bg-zinc-600;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-accent-500 bg-clip-text text-transparent;
+  }
+  .dark .text-gradient {
+    @apply from-primary-400 to-accent-400;
+  }
+}
+
+@layer utilities {
+    /* Mini Sidebar Styles */
+    body.sidebar-mini #appSidebar {
+        width: 5rem !important;
+    }
+    body.sidebar-mini #appSidebar span,
+    body.sidebar-mini #appSidebar h1,
+    body.sidebar-mini #appSidebar p,
+    body.sidebar-mini #appSidebar h3 {
+        display: none !important;
+    }
+    body.sidebar-mini #appSidebar .nav-link {
+        justify-content: center !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    body.sidebar-mini #appSidebar .nav-link i {
+        font-size: 1.25rem !important;
+        margin: 0 !important;
+    }
+    body.sidebar-mini #appSidebar .flex-1.min-w-0 {
+        display: none !important;
+    }
+}
